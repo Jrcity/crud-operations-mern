@@ -1,14 +1,10 @@
-import "./App.css";
 import PostMessageForm from "./components/PostMessageForm";
-import PostMessages from "./components/PostMessages";
-
-function App() {
+const App = () => {
   return (
-    <div className="App">
+    <div>
       <PostMessageForm />
-      <PostMessages />
     </div>
   );
-}
+};
 
 export default App;

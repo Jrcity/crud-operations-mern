@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import { useState } from "react";
+import { newPost } from "../apis";
+import e from "cors";
 
 const Form = styled.form`
   display: column;
@@ -7,6 +10,7 @@ const Form = styled.form`
   padding: 20px;
   background-color: ${(props) => props.varient};
   border-radius: 0 0 2rem 2rem;
+  position: sticky;
 `;
 const RowForm = styled.div`
   height: auto;
@@ -37,19 +41,50 @@ const Button = styled.button`
   border: 0;
   flex: 0.1;
 `;
-const TextArea = styled(Input)`
+const TextArea = styled.textarea`
   border-radius: 0.5rem;
   flex: 1;
+  padding: 15px;
+  font-family: fixedsys, monospace;
+  font-size: 1rem;
+  outline: 0;
+  color: ${(color) => color};
+  border: 0;
+  width: calc(100% - 30px);
+  flex: 0.9;
+  resize: none;
 `;
 
 const PostMessageForm = () => {
+  const [title, setTitle] = useState("");
+  const [message, setMessage] = useState("");
+  const handleSumbit = (e) => {
+    e.preventDefault();
+    if (message && title) {
+      let data = { message, title };
+      newPost(data);
+      setMessage("");
+      setTitle("");
+    }
+    return;
+  };
+
   return (
-    <Form method="POST" varient={"#233438"}>
+    <Form varient={"#233438"} onSubmit={handleSumbit}>
       <RowForm>
-        <Input placeholder="Title goes here!" />
+        <Input
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Title goes here!"
+        />
         <Button>Post </Button>
       </RowForm>
-      <TextArea row="5" placeholder="Post message..." />
+      <TextArea
+        onChange={(e) => setMessage(e.target.value)}
+        rows="5"
+        placeholder="Post message..."
+        value={message}
+      />
     </Form>
   );
 };
