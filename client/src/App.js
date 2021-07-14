@@ -1,8 +1,14 @@
-import PostMessageForm from "./components/PostMessageForm";
+import { BrowserRouter as Router } from "react-router-dom";
+import Posts from "./components/Posts";
+import Routes from "./routes";
 const App = () => {
   return (
     <div>
-      <PostMessageForm />
+      <Router>
+        <Routes>
+          <Posts />
+        </Routes>
+      </Router>
     </div>
   );
 };

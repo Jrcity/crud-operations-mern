@@ -6,12 +6,7 @@ const BASE_URL = "http://localhost:4000";
 const fetchAll = () =>
   axios
     .get(BASE_URL.concat("/postmessage"))
-    .then((res) => {
-      let { data } = res;
-
-      console.log(res.status, res.data);
-      return data;
-    })
+    .then((res) => res.data)
     .catch((err) => console.log(err));
 
 //get by post id
@@ -29,9 +24,9 @@ const newPost = (data) =>
     .catch((err) => console.log(err));
 
 //send post request
-const updatePost = (id) =>
+const updatePost = (id, data) =>
   axios
-    .put(BASE_URL.concat(`/postmessage/${id}`))
+    .put(BASE_URL.concat(`/postmessage/${id}`), data)
     .then((res) => res)
     .catch((err) => console.log(err));
 //delete post by id

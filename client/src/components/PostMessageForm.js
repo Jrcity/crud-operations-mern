@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { newPost } from "../apis";
-import e from "cors";
 
-const Form = styled.form`
+export const Form = styled.form`
   display: column;
   justify-content: space-between;
   align-items: center;
@@ -11,8 +10,13 @@ const Form = styled.form`
   background-color: ${(props) => props.varient};
   border-radius: 0 0 2rem 2rem;
   position: sticky;
+  top: 0;
+  z-index: 1;
+  width: 80vw;
+  margin-right: auto;
+  margin-left: auto;
 `;
-const RowForm = styled.div`
+export const RowForm = styled.div`
   height: auto;
   display: flex;
   flex: 1;
@@ -20,7 +24,7 @@ const RowForm = styled.div`
   margin-bottom: 10px;
 `;
 
-const Input = styled.input`
+export const Input = styled.input`
   padding: 15px;
   font-weight: bold;
   font-size: 1rem;
@@ -31,9 +35,9 @@ const Input = styled.input`
   width: calc(100% - 30px);
   flex: 0.9;
 `;
-const Button = styled.button`
+export const Button = styled.button`
   text-transform: uppercase;
-  background-color: #4da054;
+  background-color: ${(props) => props.background};
   color: #fff;
   border-radius: 0 0.5rem 0.5rem 0;
   padding: 15px;
@@ -41,14 +45,14 @@ const Button = styled.button`
   border: 0;
   flex: 0.1;
 `;
-const TextArea = styled.textarea`
+export const TextArea = styled.textarea`
   border-radius: 0.5rem;
   flex: 1;
   padding: 15px;
   font-family: fixedsys, monospace;
   font-size: 1rem;
   outline: 0;
-  color: ${(color) => color};
+  height: ${(props) => props.height};
   border: 0;
   width: calc(100% - 30px);
   flex: 0.9;
@@ -65,6 +69,7 @@ const PostMessageForm = () => {
       newPost(data);
       setMessage("");
       setTitle("");
+      document.location.reload();
     }
     return;
   };
@@ -77,7 +82,7 @@ const PostMessageForm = () => {
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Title goes here!"
         />
-        <Button>Post </Button>
+        <Button background={"#4da054"}>Post </Button>
       </RowForm>
       <TextArea
         onChange={(e) => setMessage(e.target.value)}
