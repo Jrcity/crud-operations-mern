@@ -39,13 +39,8 @@ const Posts = () => {
     <>
       <PostMessageForm />
       <PostContainer>
-        {posts.map((post) => (
-          <PostCard
-            Body={post.message}
-            Heading={post.title}
-            key={post._id}
-            id={post._id}
-          />
+        {posts.map(({ _id, message, title }) => (
+          <PostCard Body={message} Heading={title} key={_id} id={_id} />
         ))}
       </PostContainer>
     </>

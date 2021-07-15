@@ -53,7 +53,7 @@ const PostCard = ({ Body, Heading, id }) => {
         <CardActionArea>
           <CardHeading>{Heading}</CardHeading>
           <Content height="30vh">
-            {Body.split(" ").splice(0, 17).join(" ").concat(" ...Read more!")}
+            {Body?Body.split(" ").splice(0, 17).join(" ").concat(" ...Read more!"): ""}
           </Content>
         </CardActionArea>
       </Card>
