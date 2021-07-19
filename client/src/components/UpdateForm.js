@@ -13,7 +13,7 @@ const UpdateForm = () => {
       if (res === undefined) {
         return history.goBack();
       }
-      setMessage(res.data.Message);
+      setMessage(res.data.message);
       setTitle(res.data.title);
     });
   }, [history]);
@@ -22,9 +22,11 @@ const UpdateForm = () => {
     if (message || title) {
       let post = { message, title };
       updatePost(history.location.state, post);
-      setMessage("");
-      setTitle("");
-      setTimeout(() => history.push("/"), 100);
+      setTimeout(() => {
+        setMessage("");
+        setTitle("");
+        history.push("/");
+      }, 1000);
     } else return;
   }
   return (
