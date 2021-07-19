@@ -8,6 +8,10 @@ import PostMessageForm from "./PostMessageForm";
 
 const PostContainer = styled.div`
   display: grid;
+  width: 80%;
+  overflow-x: auto;
+  margin-left: auto;
+  margin-right: auto;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 0.3rem;
   padding: 20px;

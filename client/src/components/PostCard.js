@@ -53,11 +53,17 @@ const PostCard = ({ Body, Heading, id }) => {
         <CardActionArea>
           <CardHeading>{Heading}</CardHeading>
           <Content height="30vh">
-            {Body?Body.split(" ").splice(0, 17).join(" ").concat(" ...Read more!"): ""}
+            {Body
+              ? Body.split(" ").splice(0, 17).join(" ").concat(" ...Read more!")
+              : ""}
           </Content>
         </CardActionArea>
       </Card>
-      <Modal open={open} onClose={handleCloseModal}>
+      <Modal
+        style={{ overflowY: "auto" }}
+        open={open}
+        onClose={handleCloseModal}
+      >
         <ModalCard>
           <CardHeading>{Heading}</CardHeading>
           <Content>{Body}</Content>

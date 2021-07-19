@@ -3,12 +3,11 @@ import styled from "styled-components";
 
 const MCard = styled(Card)`
   position: relative;
-  top: 150px;
+  top: 100px;
   width: 50vw;
   height: fit-content;
   margin: auto;
   padding: 20px;
-  overflow-y: scroll;
 `;
 
 const ModalCard = ({ children }) => {
